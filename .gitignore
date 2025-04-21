@@ -1,0 +1,6 @@
+.env
+.cursor
+dbt_yaml_gen_env/
+generators/__pycache__
+connectors/__pycache__
+utils/__pycache__

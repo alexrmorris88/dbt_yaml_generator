@@ -1,0 +1,42 @@
+# Test configuration for dbt YAML generator
+tests:
+  - column: id
+    tests:
+      - not_null
+      - unique
+
+  - column: C_CUSTOMER_SK
+    tests:
+      - not_null
+      - unique
+      - relationships:
+          to: ref('users')
+          field: email
+
+  - column: C_CUSTOMER_ID
+    tests:
+      - not_null
+      - dbt_utils.date_in_future:
+          datepart: day
+          interval: 0
+
+  - column: C_CURRENT_CDEMO_SK
+    tests:
+      - accepted_values:
+          values: ['active', 'inactive', 'pending']
+
+  - column: C_CURRENT_HDEMO_SK
+    tests:
+      - not_null
+      - dbt_utils.expression_is_true:
+          expression: ">= 0"
+      - dbt_utils.accepted_range:
+          min_value: 0
+          max_value: 10000
+
+  - column: C_CURRENT_ADDR_SK
+    tests:
+      - not_null
+      - relationships:
+          to: ref('customers')
+          field: id
