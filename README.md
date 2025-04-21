@@ -96,7 +96,7 @@ tests:
 Run the script to generate dbt YAML files:
 
 ```bash
-python main.py
+python dbt_yaml_generator.py
 ```
 
 ### Command-Line Options
@@ -175,7 +175,3 @@ models:
 - PyYAML
 - python-dotenv
 - spaCy with en_core_web_sm language model
-
-# dbt_yaml_generator
-# dbt_yaml_generator
-# dbt_yaml_generator
